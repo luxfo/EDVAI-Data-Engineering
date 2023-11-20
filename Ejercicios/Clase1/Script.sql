@@ -79,8 +79,8 @@ from orders o
 -- 15- Obtener el identificador de la orden, y el nombre de la compañía de todas las órdenes y
 --		aquellos clientes que hagan match
 select o.order_id, c.company_name 
-from orders o
-	 right join customers c on (c.customer_id = o.customer_id)
+from customers c
+	 right join orders o on (c.customer_id = o.customer_id)
 	
 -- 16- Obtener el nombre de la compañía, y la fecha de la orden de todas las órdenes y
 --		aquellos transportistas que hagan match. Solamente para aquellas ordenes del año 1996
