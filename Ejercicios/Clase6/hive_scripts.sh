@@ -2,7 +2,7 @@ docker exec -it edvai_hadoop bash
 su hadoop
 hive
 
-CREATE TABLE tripdata.payments (vendorId int, tpep_pickup_datetime datetime, payment_type int, total_amount float)
+CREATE TABLE tripdata.payments (vendorId int, tpep_pickup_datetime date, payment_type int, total_amount float)
     > COMMENT 'Payments Table'
     > ROW FORMAT DELIMITED
     > FIELDS TERMINATED BY ',';
