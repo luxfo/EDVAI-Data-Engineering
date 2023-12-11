@@ -7,8 +7,7 @@ sqoop import \
 --query "select c.customer_id, c.company_name, count(o.order_id) as products_sold from customers c inner join orders o on (o.customer_id = c.customer_id) where \$CONDITIONS group by c.customer_id, c.company_name order by count(o.order_id) desc" \
 --m 1 \
 --P \
---target-dir /home/hadoop/sqoop/ingest \
+--target-dir /home/hadoop/sqoop/ingest/clientes \
 --as-parquetfile \
 --delete-target-dir
 
-/home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/sqoop/ingest/*.parquet /inputs/sqoop/ingest/clientes

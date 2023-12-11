@@ -5,8 +5,8 @@ sc = SparkContext('local')
 spark = SparkSession(sc)
 hc = HiveContext(sc)
 
-df_1 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/envios/yellow_tripdata_2021-01.parquet")
-df_2 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/order_details/yellow_tripdata_2021-02.parquet")
+df_1 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/envios/*.parquet")
+df_2 = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/order_details/*.parquet")
 
 df_1.createOrReplaceTempView("v_orders")
 df_2.createOrReplaceTempView("v_order_details")

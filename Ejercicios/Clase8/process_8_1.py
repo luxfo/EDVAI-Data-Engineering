@@ -5,7 +5,7 @@ sc = SparkContext('local')
 spark = SparkSession(sc)
 hc = HiveContext(sc)
 
-df = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/clientes/yellow_tripdata_2021-01.parquet")
+df = spark.read.option("header", "true").parquet("hdfs://172.17.0.2:9000/inputs/sqoop/ingest/clientes/*.parquet")
 
 df.createOrReplaceTempView("v_products_sold")
 

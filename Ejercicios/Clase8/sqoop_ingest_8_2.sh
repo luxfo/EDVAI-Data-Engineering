@@ -7,9 +7,8 @@ sqoop import \
 --query "select o.order_id, o.shipped_date, c.company_name, c.phone from orders o inner join customers c on (o.customer_id = c.customer_id) where \$CONDITIONS" \
 --m 1 \
 --P \
---target-dir /home/hadoop/sqoop/ingest \
+--target-dir /home/hadoop/sqoop/ingest/envios \
 --as-parquetfile \
 --delete-target-dir
 
-/home/hadoop/hadoop/bin/hdfs dfs -put /home/hadoop/sqoop/ingest/*.parquet /inputs/sqoop/ingest/envios
 
