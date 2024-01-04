@@ -17,7 +17,7 @@ df.createOrReplaceTempView("v_aeropuerto")
 
 spark.sql("""
     insert into aviacion_civil.aeropuerto
-    select cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 1, 2), '-', substring(Fecha, 4, 2)) as date) as fecha,
+    select cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 4, 2), '-', substring(Fecha, 1, 2)) as date) as fecha,
            cast(`Hora UTC` as string) as horaUTC,
            cast(`Clase de Vuelo (todos los vuelos)` as string) as clase_vuelo,
            cast(`Clasificación Vuelo` as string) as clasificacion_vuelo,
@@ -29,6 +29,6 @@ spark.sql("""
            cast(`Pasajeros` as integer) as pasajeros
     from v_aeropuerto
     where cast(`Clasificación Vuelo` as string) <> 'Internacional'
-    and cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 1, 2), '-', substring(Fecha, 4, 2)) as date) >= '2021-01-01'
-    and cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 1, 2), '-', substring(Fecha, 4, 2)) as date) <= '2022-06-30'
+    and cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 4, 2), '-', substring(Fecha, 1, 2)) as date) >= '2021-01-01'
+    and cast(concat(substring(Fecha, 7, 4), '-', substring(Fecha, 4, 2), '-', substring(Fecha, 1, 2)) as date) <= '2022-06-30'
 """)
